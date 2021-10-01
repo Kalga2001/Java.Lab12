@@ -1,0 +1,82 @@
+package com.company;
+import java.util.Scanner;
+import java.lang.String;
+import java.util.LinkedList;
+import java.util.*;
+
+ class Main {
+     static class Node
+     {
+         char data;
+         Node next;
+     };
+     static Node head = null;
+     static void reverseLL()
+     {
+         Stack<Node> s = new Stack<>();
+         Node temp = head;
+         while (temp.next != null)
+         {
+             s.add(temp);
+             temp = temp.next;
+         }
+         head = temp;
+         while (!s.isEmpty())
+         {
+             temp.next = s.peek();
+             s.pop();
+             temp = temp.next;
+         }
+         temp.next = null;
+     }
+
+     static void printlist(Node temp)
+     {
+         while (temp != null)
+         {
+             System.out.print(temp.data+ " ");
+             temp = temp.next;
+         }
+     }
+     static void insert_back( char value)
+     {
+         Node temp = new Node();
+         temp.data = value;
+         temp.next = null;
+         if (head == null)
+         {
+             head = temp;
+             return;
+         }
+         else
+         {
+             Node last_node = head;
+             while (last_node.next != null)
+             {
+                 last_node = last_node.next;
+             }
+             last_node.next = temp;
+             return;
+         }
+     }
+
+     public static void main(String[] args)
+     {
+         insert_back( (char)'u');
+         insert_back( 'n');
+         insert_back('i');
+         insert_back( 'v');
+         insert_back( 'e');
+         insert_back( 'r');
+         insert_back('s');
+         insert_back( 'i');
+         insert_back( 't');
+         insert_back( 'y');
+         System.out.print("Given linked list\n");
+         printlist(head);
+         reverseLL();
+         System.out.print("\nReversed linked list\n");
+         printlist(head);
+     }
+ }
+
