@@ -1,0 +1,33 @@
+package com.company;
+import java.util.Scanner;
+import java.lang.String;
+import java.util.*;
+ class Main {
+         public static void main( String [] args )
+         {
+          Scanner input=new Scanner(System.in);
+             String expression = input.nextLine();
+             String[] words = expression.split("\\W");
+             Map<String, Integer> word_map = new HashMap<>();
+             for (String word : words) {
+
+                 if (word_map.get(word) != null) {
+                     word_map.put(word, word_map.get(word) + 1);
+                 }
+
+                 else {
+                     word_map.put(word, 1);
+                 }
+             }
+              int count=0;
+             Set<String> word_set = word_map.keySet();
+
+             for (String word : word_set) {
+
+                 if (word_map.get(word) > 1)
+                       count++;
+             }
+             System.out.println("Количество повторяющихся слов: "+count);
+         }
+
+     }
